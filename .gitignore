@@ -8,7 +8,7 @@
 
 
 *.out
-
+*.db
 
 go.work
 
