@@ -14,5 +14,5 @@ func main() {
 }
 
 func migrateModels() {
-	(*settings.Database).AutoMigrate(&models.PostBoard{})
+	(*settings.Database).AutoMigrate(&models.Category{})
 }

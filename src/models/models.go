@@ -5,7 +5,7 @@ import (
 )
 
 type (
-	PostBoard struct {
+	Category struct {
 		gorm.Model
 		Name        string
 		Description string
