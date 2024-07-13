@@ -13,7 +13,7 @@ func init() {
 
 func main() {
 	server := gin.Default()
-	controllers.StartApiControllers(server)
+	controllers.RegisterApiControllers(server)
 	server.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "Success",

@@ -15,11 +15,11 @@ type (
 var ApiControllers []CRUDController
 
 func (controller CRUDController) Read(context *gin.Context) {
-	context.JSON(200, controller.model.Read(gin.H{}))
+	context.JSON(200, controller.model.Read(context))
 }
 
 func (controller CRUDController) Create(context *gin.Context) {
-	controller.model.Create(gin.H{})
+	context.JSON(200, controller.model.Create(context))
 }
 
 func InitApiControllers() {
@@ -27,10 +27,11 @@ func InitApiControllers() {
 	ApiControllers = append(ApiControllers, CRUDController{"category", modelmanagers.CategoryManager{}})
 }
 
-func StartApiControllers(server *gin.Engine) {
+func RegisterApiControllers(server *gin.Engine) {
 	var group *gin.RouterGroup = nil
 	for i := 0; i < len(ApiControllers); i++ {
 		group = server.Group("/api/v1/" + ApiControllers[i].Endpoint)
 		group.GET("/", ApiControllers[i].Read)
+		group.POST("/", ApiControllers[i].Create)
 	}
 }

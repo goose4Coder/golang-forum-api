@@ -6,10 +6,10 @@ import (
 
 type (
 	ModelManager interface {
-		Create(values gin.H) gin.H
-		Read(filters gin.H) gin.H
-		Update(values gin.H) gin.H
-		Delete(values gin.H) gin.H
+		Create(context *gin.Context) gin.H
+		Read(context *gin.Context) gin.H
+		Update(context *gin.Context) gin.H
+		Delete(context *gin.Context) gin.H
 	}
 	CategoryManager struct {
 	}
