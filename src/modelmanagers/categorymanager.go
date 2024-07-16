@@ -16,13 +16,11 @@ func (Manager CategoryManager) Create(context *gin.Context) gin.H {
 	}
 	return gin.H{"Status": "Failed to create a post category"}
 }
+
 func (Manager CategoryManager) Read(context *gin.Context) gin.H {
-	var category models.Category
-	var body gin.H
-	context.Bind(&body)
-	models.GetDataset(&category, body)
-	return gin.H{"Name": category.Name, "Description": category.Description}
+	return GetDataset[models.Category](context)
 }
+
 func (Manager CategoryManager) Update(context *gin.Context) gin.H {
 	return gin.H{}
 }
